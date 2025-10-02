@@ -5,13 +5,13 @@ import ContatoTable from '../components/contatoTable.jsx';
 import ContatoForm from '../components/ContatoForm.jsx';
 import Modal from '../components/modal.jsx';
 
+// os botes nao funcionam
 const ContatoPage = () => {
   const [contatos, setContatos] = useState([]);
   const [selectedContato, setSelectedContato] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
 
   const fetchContatos = async () => {
     setIsLoading(true);
@@ -66,12 +66,12 @@ const ContatoPage = () => {
     setSelectedContato(null);
   };
   return (
-    <div>
-      <h1>Lista de Contatos</h1>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold underline">Lista de Contatos</h1>
       {isLoading ? (
         <p>Carregando...</p>
       ) : error ? (
-        <p style={{ color: 'red' }}>{error}</p>
+        <p className="text-red-500">{error}</p>
       ) : (
         <ContatoTable
           contatos={contatos}
@@ -79,7 +79,7 @@ const ContatoPage = () => {
           onDelete={handleDelete}
         />
       )}
-      <button onClick={() => setIsModalOpen(true)}>Adicionar Contato</button>
+      <button className="btn btn-primary" onClick={() => setIsModalOpen(true)}>Adicionar Contato</button>
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           <ContatoForm

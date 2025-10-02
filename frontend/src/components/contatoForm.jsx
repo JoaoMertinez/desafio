@@ -50,7 +50,7 @@ const ContatoForm = ({ Contato, onSave, onCancel }) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="text-red-500">{error}</p>}
       <div>
         <label>Nome:</label>
         <input
@@ -89,6 +89,7 @@ const ContatoForm = ({ Contato, onSave, onCancel }) => {
           Favorito
         </label>
       </div>
+      
       <button type="submit" disabled={isSubmitting}>
         {isEditing ? (isSubmitting ? 'Atualizando...' : 'Atualizar') : (isSubmitting ? 'Salvando...' : 'Salvar')}
       </button>
